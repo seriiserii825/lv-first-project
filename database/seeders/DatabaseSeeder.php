@@ -24,8 +24,9 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call([
             CategoryTableSeeder::class,
-            // PostTableSeeder::class,
+            PostTableSeeder::class,
+            UserSeeder::class,
         ]);
-        Post::factory(10)->create();
+        // Post::factory(10)->create();
     }
 }
