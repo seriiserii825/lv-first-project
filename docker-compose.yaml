@@ -38,7 +38,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root  # Add this line to set the root password
-      MYSQL_DATABASE: laravel     # Add this to automatically create the 'laravel' database
+      MYSQL_DATABASE: first_project     # Add this to automatically create the 'laravel' database
       MYSQL_USER: serii           # Add this to create a user
       MYSQL_PASSWORD: serii1981
     volumes:
