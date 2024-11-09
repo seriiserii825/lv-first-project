@@ -18,7 +18,7 @@
                         <div class="col-lg-6">
                             <!-- Featured blog post-->
                             <div class="card mb-4">
-                                <a href="#!">
+                                <a href="{{ route('posts.show', $post->id) }}">
                                     <img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg"
                                         alt="..." />
                                 </a>
@@ -26,7 +26,7 @@
                                     <div class="small text-muted">{{ date('d-m-Y', strtotime($post->created_at)) }}</div>
                                     <h2 class="card-title">{{ $post->title }}</h2>
                                     <p class="card-text">{{ $post->text }}</p>
-                                    <a class="btn btn-primary" href="#!">Read more →</a>
+                                    <a class="btn btn-primary" href="{{ route('posts.show', $post->id) }}">Read more →</a>
                                 </div>
                             </div>
                         </div>
