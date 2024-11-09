@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.front')
 @section('content')
     <!-- Page header with logo and tagline-->
     <header class="py-5 bg-light border-bottom mb-4">
