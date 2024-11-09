@@ -9,9 +9,10 @@ services:
       dockerfile: docker/nginx.docker
     volumes:
       - ./:/var/www
-      - ./docker/nginx/ssl:/etc/nginx/ssl
+      # - ./docker/nginx/ssl:/etc/nginx/ssl
     ports:
-      - "8088:443"
+      # - "8088:443"
+      - "8080:80"
     links:
       - php-fpm
 
