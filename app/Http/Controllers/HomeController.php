@@ -2,20 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $categories = [
-            'PHP',
-            'Laravel',
-            'JavaScript',
-            'Vue.js',
-            'React.js',
-            'Angular.js',
-        ];
+        $categories = Category::all();
         return view('index', compact('categories'));
     }
 }
