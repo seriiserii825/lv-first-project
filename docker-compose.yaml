@@ -3,7 +3,7 @@ version: '3.1'
 
 services:
   nginx:
-    container_name: nginx_course
+    container_name: nginx_first_project
     build:
       context: .
       dockerfile: docker/nginx.docker
@@ -16,7 +16,7 @@ services:
       - php-fpm
 
   php-fpm:
-    container_name: php_course
+    container_name: php_first_project
     build:
       context: .
       dockerfile: docker/php/Dockerfile
@@ -32,7 +32,7 @@ services:
       - mysql
 
   mysql:
-    container_name: mysql_course
+    container_name: mysql_first_project
     image: mysql:8.3.0
     restart: always
     environment:
@@ -48,7 +48,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin_course
+    container_name: phpmyadmin_first_project
     restart: always
     ports:
      - '8084:80'
