@@ -5,20 +5,29 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-12 lg:px-12">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form method="POST" action="{{ route('posts.update', $post) }}">
                 @csrf
                 @method('PUT')
                 <div>
                     <label class="block font-medium text-sm text-gray-700">Title:</label>
-                    <input type="text" name="title" class="w-9/12" value="{{ $post->title }}" required autofocus />
+                    <input type="text" name="title" class="w-9/12" value="{{ $post->title }}"  autofocus />
                 </div>
                 <div>
                     <label class="block font-medium text-sm text-gray-700">Content:</label>
-                    <textarea name="post_text" required>{{ $post->post_text }}</textarea>
+                    <textarea name="post_text" >{{ $post->post_text }}</textarea>
                 </div>
                 <div>
                     <label class="block font-medium text-sm text-gray-700">Category:</label>
-                    <select name="category_id" required>
+                    <select name="category_id" >
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}" @if ($category->id === $post->category_id) selected @endif>{{ $category->name }}</option>
                         @endforeach
