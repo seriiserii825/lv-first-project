@@ -35,8 +35,8 @@ Route::group(['middleware' => ['auth', 'verified', 'isAdmin']], function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::resource('categories', CategoryController::class);
-    Route::resource('posts', AdminPostController::class);
+    Route::resource('/admin/categories', CategoryController::class);
+    Route::resource('/admin/posts', AdminPostController::class);
 });
 
 require __DIR__ . '/auth.php';

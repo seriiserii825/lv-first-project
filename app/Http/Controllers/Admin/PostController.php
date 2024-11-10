@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('updated_at', 'desc')->get();
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -26,7 +27,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('admin.posts.create', compact('categories'));
     }
 
     /**
@@ -37,7 +39,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Post::create([
+            'title' => $request->title,
+            'post_text' => $request->post_text,
+            'category_id' => $request->category_id,
+        ]);
+        return redirect()->route('posts.index')->with('info', 'Post created successfully');
     }
 
     /**
@@ -59,7 +66,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        $categories = Category::all();
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -69,9 +78,14 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $post->update([
+            'title' => $request->title,
+            'post_text' => $request->post_text,
+            'category_id' => $request->category_id,
+        ]);
+        return redirect()->route('posts.index')->with('info', 'Post updated successfully');
     }
 
     /**
@@ -82,6 +96,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Post::destroy($id);
+        return redirect()->route('posts.index')->with('info', 'Post deleted successfully');
     }
 }
