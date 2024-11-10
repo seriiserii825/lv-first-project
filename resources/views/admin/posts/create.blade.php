@@ -9,15 +9,15 @@
                 @csrf
                 <div>
                     <label class="block font-medium text-sm text-gray-700">Title:</label>
-                    <input type="text" name="title" class="w-9/12" value="" required autofocus />
+                    <input type="text" name="title" class="w-9/12" value="" autofocus />
                 </div>
                 <div>
                     <label class="block font-medium text-sm text-gray-700">Content:</label>
-                    <textarea name="post_text" required></textarea>
+                    <textarea name="post_text"></textarea>
                 </div>
                 <div>
                     <label class="block font-medium text-sm text-gray-700">Category:</label>
-                    <select name="category_id" required>
+                    <select name="category_id">
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach
