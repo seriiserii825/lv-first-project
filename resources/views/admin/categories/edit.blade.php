@@ -5,12 +5,22 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <form method="POST" action="{{ route('categories.update', $category) }}">
                 @csrf
                 @method('PUT')
                 <div>
                     <label class="block font-medium text-sm text-gray-700">Name:</label>
-                    <input type="text" name="name" value="{{ $category->name }}" required autofocus />
+                    <input type="text" name="name" value="{{ $category->name }}"  autofocus />
                 </div>
                 <div class="flex items center justify-between mt-4">
                     <button type="submit"
